@@ -13,8 +13,8 @@
  * @author joyal-hg <https://github.com/joyal-hg>
  * @license MIT
  */
-const fetch = require('node-fetch');
-const contractAddress = '';
+import fetch from 'node-fetch';
+const contractAddress = '0x6173762f8d4E940b28E1893A821F3BfA2CB7e360';
 const maxSupply = 10000;
 const startIndex = 1;
 const threads = 4;
@@ -31,7 +31,7 @@ const refresh = async (start, end) => {
         try {
             await fetch(`https://api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}/?force_update=true`);
             console.log(`refreshed ${tokenId}`);
-            await wait(100); // we wait a bit to not be banned from the API
+            await wait(500); // we wait a bit to not be banned from the API
         } catch (err) {
             console.warn(`Unable to refresh cache: ${tokenId}`, err);
         }
